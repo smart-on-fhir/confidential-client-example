@@ -1,0 +1,22 @@
+{
+  "name": "confidential-app-launcher",
+  "version": "0.0.1",
+  "description": "Backend to initiate confidential launch of a SMART app",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "nodemon index.js"
+  },
+  "author": "Josh Mandel",
+  "license": "Apache-2.0",
+  "dependencies": {
+    "cookie-session": "^2.0.0-alpha.1",
+    "express": "^4.14.0",
+    "morgan": "^1.7.0",
+    "needle": "^1.0.0",
+    "node-uuid": "^1.4.7"
+  },
+  "devDependencies": {
+    "nodemon": "^1.9.2"
+  }
+}
