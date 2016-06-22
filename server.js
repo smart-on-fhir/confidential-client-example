@@ -48,8 +48,8 @@ app.get("/token", function(req, res, next){
   var code = req.query.code;
   var iss = req.session.iss;
 
-  //delete req.session.iss;
-  //delete req.session.state;
+  delete req.session.iss;
+  delete req.session.state;
 
   var client = config.clients[iss];
   console.log("state", req.session.state);
