@@ -33,7 +33,6 @@ module.exports = function(iss){
     if (!noCache && cache[iss]){
       return resolve(cache[iss]);
     }
-    console.log("Get metaat for", iss);
     needle.get(iss + '/metadata', {
       parse_response: false,
       decode_response: true,
@@ -41,10 +40,8 @@ module.exports = function(iss){
         accept: 'application/fhir+json'
       }
     }, function(err, resp){
-    console.log("got metaat for", iss);
       if (resp.body){
         var u = cache[iss] = parse(JSON.parse(resp.body.toString()));
-        console.log("Andn it's", u);
         return resolve(u);
       }
       reject("bad mdatadata response");

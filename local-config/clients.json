@@ -1,0 +1,8 @@
+{
+  "https://fhir-api-dstu2.smarthealthit.org": {
+    "client_id": "2708c767-eed3-432e-a5fd-d40c2ea7327e",
+    "client_secret": "Csq4d0ZYXzzl1AugVZNlq_lmE7cAjiK7830906EuReamgf636Tpexys3zgZ3IFpS88cw7VG6VJabM1glPx-XLg",
+    "redirect_uri": "http://localhost:8000/index.html",
+    "scope": "launch/patient patient/*.read"
+  }
+}

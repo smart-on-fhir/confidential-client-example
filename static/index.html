@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://rawgithub.com/smart-on-fhir/client-js/master/dist/fhir-client.js"></script>
+    <script src="https://code.jquery.com/jquery-3.0.0.js" integrity="sha256-jrPLZ+8vDxt2FnE1zvZXCkCcebI/C8Dt5xyaQBjxQIo=" crossorigin="anonymous"></script>
+  </head>
+  <body>
+    <h1>Medications for <span id="name"></span></h1>
+    <ul id="med_list"></ul>
+
+    <script type="text/javascript">
+
+      var token = $
+      .get("/token" + window.location.search)
+      .then(function(response){
+        console.log("Got token", response);
+
+        var smart = FHIR.client({
+          serviceUrl: response.iss,
+          patientId: response.token.patient,
+          auth: {
+            type: "bearer",
+            token: response.token.access_token
+          }
+        });
+
+        smart.patient.read().then(function(pt) {
+          displayPatient (pt);
+        });
+
+      });
+
+      function getPatientName (pt) {
+        if (pt.name) {
+          var names = pt.name.map(function(name) {
+            return name.given.join(" ") + " " + name.family.join(" ");
+          });
+          return names.join(" / ")
+        } else {
+          return "anonymous";
+        }
+      }
+
+      function displayPatient (pt) {
+        document.getElementById('name').innerHTML = getPatientName(pt);
+      }
+
+    </script>
+  </body>
+</html>
